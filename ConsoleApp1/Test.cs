@@ -1,8 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsoleApp1
 {
@@ -15,10 +18,8 @@ namespace ConsoleApp1
             NameSubject = nameSubject;
             TestPassed = testPassed;
         }
-        public Test() : this("NoName", false) 
-        {
-
-        }
+        public Test() : this("NoName", false) {}
         public override string ToString() => $"Предмет: {NameSubject}, Зачёт: {TestPassed}";
+        public Test DeepCopy() => new Test(this.NameSubject, this.TestPassed);
     }
 }
